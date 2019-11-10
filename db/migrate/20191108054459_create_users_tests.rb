@@ -1,9 +1,12 @@
 class CreateUsersTests < ActiveRecord::Migration[6.0]
   def change
-    create_table :users_tests do |t|
-      t.references :user, foreign_key: true	
-      t.references :test, foreign_key: true
+    create_table :user_tests do |t|	
+      
       t.timestamps
     end
+    add_reference :user_tests, :users, foreign_key: true
+    add_reference :user_tests, :tests, foreign_key: true
+    change_column_null :user_tests, :users_id, false
+    change_column_null :user_tests, :tests_id, false
   end
 end
