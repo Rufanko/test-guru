@@ -33,3 +33,4 @@ usertests = UserTests.create! [{user_id: users.first.id, test_id: tests.second.i
                    {user_id: users.second.id,test_id: tests.third.id},
                    {user_id: users.third.id, test_id: tests.first.id},
                    {user_id: users.first.id, test_id: tests.first.id}]
+                   
