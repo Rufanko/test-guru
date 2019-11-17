@@ -1,6 +1,10 @@
 class User < ApplicationRecord
+	has_many :tests_users, dependent: :destroy
+	has_many :tests, through: :tests_users
+	has_many :authors_tests, class_name: 'Test', foreign_key: 'author_id', dependent: :nullify
+
 	def find_by_level(level)
-	  Test.joins("JOIN user_tests ON user_tests.test_id = tests.id ").where(tests: { level: level},  user_tests: { user_id: id})
+	  tests.where(level: level)
 	end
 
 end
