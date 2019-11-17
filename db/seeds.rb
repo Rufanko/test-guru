@@ -13,18 +13,18 @@ categories = Category.create!([{ name: 'Ruby' },
                                { name: 'HTML' },
                                { name: 'CSS' },
                                { name: 'Javascript' }])
-users = User.create!([{ name: 'Ivan' },
-                      { name: 'Oleg' },
-                      { name: 'Natalya' },
-                      { name: 'Vasiliy' }])
-tests = Test.create!([{ title: 'RoR test for begginers', level: 3, category: categories[3], author: users[3] },
-                      { title: 'RoR  intermediate test', level: 5, category: categories[3], author: users[3] },
-                      { title: 'RoR test for experts', level: 10, category: categories[3], author: users[3] },
-                      { title: 'Javascript intermediate test', level: 7, category: categories[3], author: users[3] },
-                      { title: 'Javascript test for beginners', level: 2, category: categories[3], author: users[3] },
-                      { title: 'Ruby basics', level: 1, category: categories[3], author: users[3] },
-                      { title: 'Ruby test for begginers', level: 3, category: categories[3], author: users[3] },
-                      { title: 'HTML advanced test', level: 9, category: categories[3], author: users[3] }])
+users = User.create!([{ name: 'Ivan', email: 'Ivan1337@mail.ru' },
+                      { name: 'Oleg', email: 'Oleg1978@mail.ru' },
+                      { name: 'Natalya', email: 'Nata92@mail.ru' },
+                      { name: 'Vasiliy', email: 'vasiliyinbusinnes@mail.ru' }])
+tests = Test.create!([{ title: 'RoR test for begginers', level: 3, category: categories[2], author: users[3] },
+                      { title: 'RoR  intermediate test', level: 5, category: categories[2], author: users[3] },
+                      { title: 'RoR test for experts', level: 10, category: categories[2], author: users[3] },
+                      { title: 'Javascript intermediate test', level: 7, category: categories[4], author: users[3] },
+                      { title: 'Javascript test for beginners', level: 2, category: categories[4], author: users[3] },
+                      { title: 'Ruby basics', level: 1, category: categories[0], author: users[3] },
+                      { title: 'Ruby test for begginers', level: 4, category: categories[0], author: users[3] },
+                      { title: 'HTML advanced test', level: 9, category: categories[2], author: users[3] }])
 questions = Question.create!([{ content: 'text', test: tests[4] },
                               { content: 'text', test: tests[5] },
                               { content: 'text', test: tests[2] }])
