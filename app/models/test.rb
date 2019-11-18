@@ -9,9 +9,9 @@ class Test < ApplicationRecord
   scope :easy, -> {where(level: 0..1)}
   scope :intermediate, -> {where(level: 2..4)}
   scope :hard, -> {where(level:5..Float::INFINITY)}
-  scope :all_tests_by_category, -> (category) {Test.joins(:category).where categories: {name:category}}
+  scope :all_tests_by_category, -> (category) {Test.joins(:category).where(categories: {name:category}).order(id: :desc)}
   
-  validates :level, numericality: {only_fixnum: true}
+  validates :level, numericality: {only_integer: true}
   validates :title, uniqueness: { scope: :level, message: 'uniqueness error' }
   validates :title, presence: true    
 end
