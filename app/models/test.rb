@@ -11,7 +11,7 @@ class Test < ApplicationRecord
   scope :hard, -> {where(level:5..Float::INFINITY)}
   scope :all_tests_by_category, -> (category) {Test.joins(:category).where(categories: {name:category}).order(id: :desc)}
   
-  validates :level, numericality: {only_integer: true}
+  validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :title, uniqueness: { scope: :level, message: 'uniqueness error' }
   validates :title, presence: true    
 end
