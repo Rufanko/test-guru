@@ -1,5 +1,5 @@
 class TestsController < ApplicationController
-  before_action :find_test, only: [:show, :update, :edit]
+  before_action :find_test, only: [:show, :update, :edit, :destroy]
   
   def show
   end
@@ -13,6 +13,11 @@ class TestsController < ApplicationController
   end
 
   def edit
+  end
+
+  def destroy
+    @test.destroy
+    redirect_to tests_path
   end
 
   def update
