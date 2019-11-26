@@ -24,6 +24,10 @@
         <%= form.collection_select :category_id, Category.all, :id, :name, prompt: true %>
     </p>
 
+    <p>
+        <%= form.label :author %>
+        <%= form.collection_select :author_id, User.all, :id, :name, prompt: true %>
+    </p>
 
 	<p><%= form.submit %></p>
 	<% end %>
