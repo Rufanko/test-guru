@@ -1,19 +1,17 @@
 class TestsController < ApplicationController
-  before_action :find_test, only: [:show, :update, :edit, :destroy]
-  
-  def show
-  end
+  before_action :find_test, only: %i[show update edit destroy]
+
+  def show; end
 
   def index
-		@tests = Test.all
+    @tests = Test.all
   end
 
   def new
-  	@test = Test.new
+    @test = Test.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def destroy
     @test.destroy
@@ -22,20 +20,20 @@ class TestsController < ApplicationController
 
   def update
     if @test.update(test_params)
-    redirect_to @test
+      redirect_to @test
     else
-    render :edit
+      render :edit
     end
-  end	
+  end
 
   def create
-  	@test = Test.new(test_params)
+    @test = Test.new(test_params)
 
-  	if @test.save
-  		redirect_to @test
-  	else
-  		render :new
-  	end
+    if @test.save
+      redirect_to @test
+    else
+      render :new
+    end
   end
 
   private
@@ -45,7 +43,6 @@ class TestsController < ApplicationController
   end
 
   def find_test
-		@test = Test.find(params[:id])
+    @test = Test.find(params[:id])
   end
-
 end

@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
- 	
- get 'tests/:test_id/questions/:id/destroy' => 'questions#destroy'
+
+  root to: 'tests#index'
 
   resources :tests do
-  	resources :questions, shallow: true
+  	resources :questions, except: :index, shallow: true
   end
 
 
