@@ -1,8 +1,11 @@
 <h1> <%= @test.title %> </h1>
-<h2> Questions for this test: <h2>
+<h3> Questions for this test: <h3>
  <% @test.questions.each do |question| %>
-  <h3> <%= question.content  %></h3> 
+  <p> <%= question.content  %>
+  	<%= link_to 'Watch question', question_path(question) %>
+  </p> 
    <% end %> 
-<%= link_to 'Watch question', question_path %>
-<%= link_to 'Edit', edit_test_path(@test) %>
+
+<%= link_to 'Edit this test', edit_test_path(@test) %>
+<%= link_to 'Add new question for this test', new_test_question_path(@test) %>
 <%= link_to 'Back', tests_path %>
