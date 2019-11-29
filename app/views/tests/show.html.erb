@@ -1,0 +1,13 @@
+<h1> <%= @test.title %> </h1>
+<h3> Questions for this test: <h3>
+<table>
+	<tr>
+	    <th>Title</th>
+	</tr>
+<%= render @test.questions %>
+</table>
+<ul>
+<li><%= link_to 'Edit this test', edit_test_path(@test) %></li>
+<li><%= link_to 'Add new question for this test', new_test_question_path(@test) %></li>
+<li><%= link_to 'Back', tests_path %></li>
+</ul>
