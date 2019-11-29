@@ -5,7 +5,7 @@ module ApplicationHelper
 	end
 
 	def current_year
-	  Date.today.year
+	  Time.current.year
 	end
 
 	def my_name
