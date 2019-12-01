@@ -2,9 +2,11 @@ Rails.application.routes.draw do
 
   root to: 'tests#index'
 
-  resources :tests do
-  	resources :questions, except: :index, shallow: true
-  end
 
+  resources :tests do
+  	resources :questions, except: :index, shallow: true do
+  		resources :answers, except: :index, shallow: true
+    end
+  end
 
 end
