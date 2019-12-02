@@ -30,7 +30,4 @@ questions = Question.create!([{ content: 'text', test: tests[4] },
                               { content: 'text', test: tests[2] }])
 answers = Answer.create!([{ correct: true, content: 'text', question: questions[2] },
                           { correct: false, content: 'text', question: questions[1] }])
-usertests = TestsUser.create!([{ user: users[0], test: tests[1] },
-                               { user: users[0], test: tests[1] },
-                               { user: users[0], test: tests[1] },
-                               { user: users[0], test: tests[1] }])
+
