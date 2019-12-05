@@ -1,6 +1,6 @@
 class TestsController < ApplicationController
   before_action :find_test, only: %i[show update edit destroy start]
-  before_action :set_user, only: %[start]
+  before_action :set_user, only: %i[start]
 
   def show; end
 
@@ -57,4 +57,3 @@ class TestsController < ApplicationController
   end
 
 end
-
