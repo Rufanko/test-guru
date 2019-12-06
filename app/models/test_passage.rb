@@ -5,9 +5,7 @@ class TestPassage < ApplicationRecord
   before_validation :before_validation_set_current_question, on: %i[create update]
 
   def accept!(answer_ids)
-    if correct_answer?(answer_ids)
-      self.correct_questions += 1
-    end
+    self.correct_questions += 1 if correct_answer?(answer_ids)
     save!
   end
 
@@ -24,7 +22,7 @@ class TestPassage < ApplicationRecord
   end
 
   def current_question_index
-    test.questions.order(:id).index(current_question) + 1
+    test.questions.where('id < ?', current_question.id).count + 1
   end
 
 
