@@ -1,0 +1,10 @@
+<h1> The <%= @test_passage.test.title %> Test was completed </h1>
+<% if @test_passage.success? %>
+ <%= content_tag(:span, @test_passage.success_rating, class: 'test_passage_sucess') %>%,
+ <br>
+ Great result
+ <% else %>
+ <%= content_tag(:span, @test_passage.success_rating, class: 'test_passage_fail') %>%,
+ <br>
+ Not your day...
+ <% end %>
