@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
-  get 'users/new'
-  #get 'test_passages/show'
-  #get 'test_passages/update'
   root to: 'tests#index'
-  get :signup, to: 'users#new'
 
+  get :signup, to: 'users#new'
+  get :login, to: 'sessions#new'
+
+  resources :sessions, only: :create
   resources :users, only: :create
 
   resources :tests do
