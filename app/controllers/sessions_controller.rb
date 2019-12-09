@@ -7,8 +7,8 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:email])
     if user&.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to session[:custom_path]
-      session.delete[:custom_path]
+      redirect_to session[:custom_path] if session[:custom_path]
+      session.delete(:custom_path)
     else
       flash.now[:alert] = 'Try again'
       render :new
