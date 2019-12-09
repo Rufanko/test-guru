@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
     if user&.authenticate(params[:password])
       session[:user_id] = user.id
       redirect_to session[:custom_path]
+      session.delete[:custom_path]
     else
       flash.now[:alert] = 'Try again'
       render :new
