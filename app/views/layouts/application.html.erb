@@ -13,6 +13,7 @@
     <p class="logout"> <%= link_to 'Logout', logout_path, :method => :delete %> </p>
     <p class="nav main"> <%= link_to 'TestGuru', root_path %> </p>
     <% end %>
+    <%= render 'shared/flash' %>
     <%= yield %>
   <%= render 'layouts/footer' %>
   </body>

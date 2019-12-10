@@ -8,12 +8,12 @@ class AnswersController < ApplicationController
   def show
   end
 
-  
+
   def new
     @answer = @question.answers.new
   end
 
- 
+
   def edit
   end
 
@@ -22,13 +22,13 @@ class AnswersController < ApplicationController
 
       if @answer.save
         redirect_to @answer, notice: 'answer was succesfuly create'
-      else 
+      else
         render :new
       end
   end
 
    def update
-    
+
       if @answer.update(answer_params)
         redirect_to @answer.question
       end
@@ -36,7 +36,7 @@ class AnswersController < ApplicationController
 
    def destroy
     @answer.destroy
-    redirect_to @answer.question, notice: 'succes' 
+    redirect_to @answer.question, notice: 'succes'
    end
 
   private
