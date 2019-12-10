@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
 
-  #get 'test_passages/show'
-  #get 'test_passages/update'
   root to: 'tests#index'
 
+  get :signup, to: 'users#new'
+  get :login, to: 'sessions#new'
+  delete :logout, to: 'sessions#destroy'
+
+  resources :sessions, only: :create
+  resources :users, only: :create
 
   resources :tests do
   	resources :questions, except: :index, shallow: true do

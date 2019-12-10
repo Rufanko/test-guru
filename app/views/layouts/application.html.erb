@@ -8,6 +8,11 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
+    <% if logged_in? %>
+    <p class="nav user"> Welcome, <b><%= current_user.email %> </b> Guru</p>
+    <p class="logout"> <%= link_to 'Logout', logout_path, :method => :delete %> </p>
+    <p class="nav main"> <%= link_to 'TestGuru', root_path %> </p>
+    <% end %>
     <%= yield %>
   <%= render 'layouts/footer' %>
   </body>

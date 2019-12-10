@@ -7,7 +7,7 @@ class AddTestsTitleNullConstraint < ActiveRecord::Migration[6.0]
   	change_column_null(:tests, :title, false)
   	change_column_null(:answers, :content, false)
   	change_column_null(:questions, :content, false)
-  	change_column_null(:users, :name, false)
+  	#change_column_null(:users, :name, false)
   	change_column_null(:categories, :name, false)
 
     add_reference :answers, :question, foreign_key: true
