@@ -1,4 +1,4 @@
-# Preview all emails at http://localhost:3000/rails/mailers/tests_mailer
+# Preview all emails at  
 class TestsMailerPreview < ActionMailer::Preview
 
 def completed_test
