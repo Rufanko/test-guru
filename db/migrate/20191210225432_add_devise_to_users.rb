@@ -15,11 +15,11 @@ class AddDeviseToUsers < ActiveRecord::Migration[6.0]
       t.datetime :remember_created_at
 
       ## Trackable
-      # t.integer  :sign_in_count, default: 0, null: false
-      # t.datetime :current_sign_in_at
-      # t.datetime :last_sign_in_at
-      # t.string   :current_sign_in_ip
-      # t.string   :last_sign_in_ip
+       t.integer  :sign_in_count, default: 0, null: false
+       t.datetime :current_sign_in_at
+       t.datetime :last_sign_in_at
+       t.string   :current_sign_in_ip
+       t.string   :last_sign_in_ip
 
        ## Confirmable
        t.string   :confirmation_token
@@ -47,11 +47,12 @@ class AddDeviseToUsers < ActiveRecord::Migration[6.0]
   end
 
   def self.down
-    remove_column(:users, :encrypted_password, :reset_password_token,
+    remove_columns(:users, :encrypted_password, :reset_password_token,
                           :reset_password_sent_at, :remember_created_at,
-                          :sign_in_count, :current_sign_in_at, :last_sign_in_at,
-                          :current_sign_in_ip, :last_sign_in_ip, :confirmation_token,
-                          :confirmed_at, :confirmation_sent_at, :unconfirmed_email)
+                          :confirmation_token,
+                          :confirmed_at,  :confirmation_sent_at, :unconfirmed_email,
+                          :sign_in_count, :current_sign_in_at,   :last_sign_in_at,
+                          :current_sign_in_ip, :last_sign_in_ip)
 
     add_column(:users, :password_digest, :string)
     remove_index(:users, :email)
