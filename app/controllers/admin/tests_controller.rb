@@ -1,6 +1,7 @@
 class Admin::TestsController < ApplicationController
   before_action :find_test, only: %i[show update edit destroy start]
   before_action :authenticate_user!
+  before_action :check_admin
   def show; end
 
   def index
@@ -45,7 +46,7 @@ class Admin::TestsController < ApplicationController
   private
 
   def test_params
-    params.require(:test).permit(:title, :level, :category_id, :author_id)
+    params.require(:test).permit(:title, :level, :category_id)
   end
 
   def find_test
