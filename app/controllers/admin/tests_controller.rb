@@ -1,6 +1,5 @@
-class Admin::TestsController < ApplicationController
+class Admin::TestsController < Admin::BaseController
   before_action :find_test, only: %i[show update edit destroy start]
-  before_action :authenticate_user!
   before_action :check_admin
   def show; end
 
