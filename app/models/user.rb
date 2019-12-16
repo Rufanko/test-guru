@@ -1,12 +1,12 @@
 class User < ApplicationRecord
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :trackable, :confirmable
 
 	has_many :test_passages, dependent: :destroy
 	has_many :tests, through: :test_passages
 	has_many :authors_tests, class_name: 'Test', foreign_key: 'author_id', dependent: :nullify
-	
+
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable,
+         :trackable, :confirmable
 
 	def find_by_level(level)
 	  tests.where(level: level)
