@@ -1,10 +1,7 @@
 class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-
-  def check_admin
-    redirect_to root_path, alert: 'you  have no permissions to view this page' unless current_user.admin?
-  end
+  before_action :authenticate_user!
 
   def after_sign_in_path_for(user)
     if user.admin?
