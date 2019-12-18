@@ -33,8 +33,9 @@ en:
   hello: "Hello world"
 
   test_passages:
-    gist:
+
       result:
         header: "the #{title} Test was Completed"
+      gist:
       success: 'Gist was successfuly created'
       failure: 'An error occured while saving gist'
