@@ -33,7 +33,6 @@ en:
   hello: "Hello world"
 
   test_passages:
-
       result:
         header: "the #{title} Test was Completed"
       gist:
