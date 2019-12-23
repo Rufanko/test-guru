@@ -1,6 +1,8 @@
 class TestPassagesController < ApplicationController
   before_action :set_test_passage, only: %i[show update result gist]
   before_action :authenticate_user!
+  ACCESS_TOKEN = '80124af143735c18904dbf0de9641682b926a9c9'
+
 
   def show; end
 
@@ -17,16 +19,21 @@ class TestPassagesController < ApplicationController
   end
 
   def gist
-    result = GistQuestionService.new(@test_passage.current_question).call
+    result = GistQuestionService.new(
+      @test_passage.current_question,
+      Octokit::Client.new(access_token: ACCESS_TOKEN)).call
 
-    flash_options = if result.success?
-      { notice: t('.success')  }
-    else
-      { alert: t('.fail')  }
-    end
+    @gist = current_user.gists.create(question: @test_passage.current_question, url: result[:html_url])
 
-    redirect_to @test_passage, flash_options
+    flash_options = if result.present?
+                      { notice: t('.success', url: @gist.url) }
+                    else
+                      { alert: t('.failure') }
+                    end
+    redirect_to test_passage_path(@test_passage), flash_options
   end
+
+
 
 
   private

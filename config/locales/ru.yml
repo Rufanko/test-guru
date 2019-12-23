@@ -3,5 +3,5 @@ ru:
     result:
       header: " #{title} Тест был пройден"
     gist:
-    success: 'Gist был успешно создан'
+    success: ' Gist был успешно создан %{url}'
     failure: 'Возникла ошибка...'
