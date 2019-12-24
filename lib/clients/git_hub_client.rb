@@ -1,7 +1,6 @@
 class GitHubClient
 
   ROOT_ENDPOINT = 'https://api.github.com'
-  ACCESS_TOKEN = '80124af143735c18904dbf0de9641682b926a9c9'
 
   def initialize
     @http_client = setup_http_client
@@ -9,7 +8,7 @@ class GitHubClient
 
   def create_gist(params)
     @http_client.post('gists') do |request|
-      request.headers['Authorization'] = "token #{ACCESS_TOKEN}"
+      request.headers['Authorization'] = "token #{Rails.application.credentials.gist_github_api_access_token!}"
       request.headers['Content-Type'] = 'application/json'
       request.body = params.to_json
     end
