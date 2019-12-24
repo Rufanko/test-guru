@@ -1,8 +1,6 @@
 class TestPassagesController < ApplicationController
   before_action :set_test_passage, only: %i[show update result gist]
   before_action :authenticate_user!
-  ACCESS_TOKEN = '80124af143735c18904dbf0de9641682b926a9c9'
-
 
   def show; end
 
