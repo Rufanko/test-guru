@@ -6,5 +6,4 @@ class Gist < ApplicationRecord
     url.split("/")[-1]
   end
 
-
 end

@@ -1,5 +1,5 @@
 <tr>
-  <td> <%=gist.question.content%> </td>
-  <td> <%=gist.question.content%> </td>
+  <td> <%=truncate gist.question.content, length: 25%> </td>
+  <td> <%=link_to gist.hash, gist.url%> </td>
   <td> <%=gist.user.email%> </td>
 </tr>
