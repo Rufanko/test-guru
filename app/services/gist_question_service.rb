@@ -1,5 +1,5 @@
 class GistQuestionService
-  def initialize(question, client)
+  def initialize(question, client = default_client)
     @question = question
     @test = @question.test
     @client = client
@@ -28,4 +28,11 @@ class GistQuestionService
     content += @question.answers.pluck(:content)
     content.join("\n")
   end
+
+  private
+
+  def default_client
+    Octokit::Client.new(access_token: Rails.application.credentials.gist_github_api_access_token!)
+  end
+
 end

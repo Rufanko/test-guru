@@ -2,6 +2,7 @@ class TestPassagesController < ApplicationController
   before_action :set_test_passage, only: %i[show update result gist]
   before_action :authenticate_user!
 
+
   def show; end
 
   def result; end
@@ -18,9 +19,9 @@ class TestPassagesController < ApplicationController
 
   def gist
     result = GistQuestionService.new(
-      @test_passage.current_question,
-      Octokit::Client.new(access_token: Rails.application.credentials.gist_github_api_access_token!)).call
+      @test_passage.current_question).call
 
+    if result.success?
     @gist = current_user.gists.create(question: @test_passage.current_question, url: result[:html_url])
 
     flash_options = if result.present?
