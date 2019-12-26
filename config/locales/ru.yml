@@ -1,0 +1,7 @@
+ru:
+  test_passages:
+    result:
+      header: "#{title} Тест был пройден"
+    gist:
+      success: 'Gist был успешно создан %{url}'
+      failure: 'Возникла ошибка...'
