@@ -14,8 +14,19 @@ function sortRowsByTitle() {
     sortedRows.push(rows[i])
   }
 
-  sortedRows.sort(CompareRows)
+  if (this.querySelector('.octicon-arrow-up').classList.contains('hide')) {
+    sortedRows.sort(CompareRowsAsc)
+    this.querySelector('.octicon-arrow-up').classList.remove('hide')
+    this.querySelector('.octicon-arrow-down').classList.add('hide')
+  } else {
+    sortedRows.sort(CompareRowsDesc)
+    this.querySelector('.octicon-arrow-up').classList.add('hide')
+    this.querySelector('.octicon-arrow-down').classList.remove('hide')
+  }
+
+
   var sortedTable = document.createElement('table')
+
   sortedTable.classList.add('table')
   sortedTable.appendChild(rows[0])
 
@@ -26,11 +37,20 @@ function sortRowsByTitle() {
   table.parentNode.replaceChild(sortedTable, table)
 }
 
-  function CompareRows(row1, row2) {
+  function CompareRowsAsc(row1, row2) {
     var testTitle1 = row1.querySelector('td').textContent
     var testTitle2 = row2.querySelector('td').textContent
 
     if (testTitle1 < testTitle2) {return -1}
     if (testTitle1 > testTitle2) {return 1}
+    return 0
+  }
+
+  function CompareRowsDesc(row1, row2) {
+    var testTitle1 = row1.querySelector('td').textContent
+    var testTitle2 = row2.querySelector('td').textContent
+
+    if (testTitle1 < testTitle2) {return 1}
+    if (testTitle1 > testTitle2) {return -1}
     return 0
   }
