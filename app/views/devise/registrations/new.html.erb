@@ -24,6 +24,8 @@
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= octicon 'verified', class: 'password-confirm-positive hide' %>
+    <%= octicon 'unverified', class: 'password-confirm-negative hide' %>
   </div>
 
   <div class="field">

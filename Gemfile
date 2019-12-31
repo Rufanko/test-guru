@@ -39,6 +39,10 @@ gem 'faraday'
 
 gem 'octokit'
 
+gem 'octicons_helper'
+
+gem 'bootstrap'
+
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
