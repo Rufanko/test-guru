@@ -11,7 +11,7 @@ function checkpasswords() {
   if (password_confirmation.length == 0) {
     document.querySelector('.octicon-verified').classList.add('hide')
     document.querySelector('.octicon-unverified').classList.add('hide')
-
+    return
   }
 
   if (password == password_confirmation) {
