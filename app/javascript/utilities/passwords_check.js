@@ -15,10 +15,10 @@ function checkpasswords() {
   }
 
   if (password == password_confirmation) {
-      document.querySelector('.octicon-verified').classList.remove('hide')
-      document.querySelector('.octicon-unverified').classList.add('hide')
-    } else {
-      document.querySelector('.octicon-verified').classList.add('hide')
-      document.querySelector('.octicon-unverified').classList.remove('hide')
-    }
+    document.querySelector('.octicon-verified').classList.remove('hide')
+    document.querySelector('.octicon-unverified').classList.add('hide')
+  } else {
+    document.querySelector('.octicon-verified').classList.add('hide')
+    document.querySelector('.octicon-unverified').classList.remove('hide')
+  }
 }
