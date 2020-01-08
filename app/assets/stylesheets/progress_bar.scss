@@ -1,0 +1,12 @@
+.progress-bar {
+width: 100%;
+height: 26px;
+border: 1px solid black;
+background-color: grey;
+}
+
+.current-progress {
+width: 0.1%;
+height: 100%;
+background-color: LawnGreen;
+}

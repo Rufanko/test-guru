@@ -1,5 +1,9 @@
 
 <h2>Question <%= @test_passage.current_question_index %>/ <%= @test_passage.test.questions.count %></h2>
+<%= content_tag :div,  class: 'progress-bar',  data: { total_questions: @test_passage.test.questions.count} do %>
+  <%= content_tag :div, class: 'current-progress', data: { currentquestion: @test_passage.current_question_index} do %>
+  <% end %>
+<% end %>
 
 <p>
 <b><%= @test_passage.current_question.content %></b>
