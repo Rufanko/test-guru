@@ -1,5 +1,7 @@
 class BadgeService
 
+  attr_reader :given
+
   def initialize(test_passage)
     @user = test_passage.user
     @test = test_passage.test
@@ -14,6 +16,7 @@ class BadgeService
 
   def reward!(badge)
     @user.badges.push(badge)
+    @given = true
   end
 
   private
