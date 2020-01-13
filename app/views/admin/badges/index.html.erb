@@ -12,10 +12,10 @@
 
   <tbody>
       <tr>
-        <td><%= badge.image_url %></td>
-        <td><%= link_to 'Show', badge %></td>
-        <td><%= link_to 'Edit', edit_admin_badge_path(badge) %></td>
-        <td><%= link_to 'Destroy', badge, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <td><%= link_to 'Show' %></td>
+        <td><%= link_to 'Edit'%></td>
+
       </tr>
   </tbody>
   <%= render @badges %>
@@ -23,4 +23,4 @@
 
 <br>
 
-<%= link_to 'New Badge', new_badge_path %>
+<%= link_to 'New Badge', new_admin_badge_path %>

@@ -10,7 +10,7 @@ class BadgeService
 
   def call
     Badge.all.each  do |badge|
-      reward!(badge) if send("#{badge.title}", rule)
+      reward!(badge) if send("#{badge.title}", badge.rule)
     end
   end
 
@@ -22,7 +22,7 @@ class BadgeService
   private
 
   def first_try_badge(blank)
-    @user.tests.where(id: test.id).count == 1 && @test_passage.success?
+    @user.tests.where(id: @test.id).count == 1 && @test_passage.success?
   end
 
   def certain_level_badge(level)

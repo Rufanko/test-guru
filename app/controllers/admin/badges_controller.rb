@@ -14,7 +14,7 @@ class Admin::BadgesController < Admin::BaseController
 
   def create
     if Badge.create(badge_params)
-
+      redirect_to admin_badges_path
     else
       render :new
     end
