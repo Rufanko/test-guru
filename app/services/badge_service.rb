@@ -20,11 +20,13 @@ class BadgeService
   end
 
   def certain_level_badge(level)
-    @test_passage.success? && Test.all.where(level: level).count == @user.tests.where(level: level).uniq.count
+   if @test_passage.success? && @test.level = level
+     Test.all.where(level: level).count == @user.tests.where(level: level).uniq.count
+   end
   end
 
   def all_in_category_badge(category)
-    @test_passage.success? && (Test.all_tests_by_category(category).count == @user.tests.where(category: category).uniq.count)
+    @test_passage.success? && (Test.all_tests_by_category(category).count == @user.test_passag.where(category: category).uniq.count)
   end
 
 
