@@ -1,7 +1,5 @@
 class BadgeService
 
-  attr_reader :given
-
   def initialize(test_passage)
     @user = test_passage.user
     @test = test_passage.test
@@ -9,15 +7,11 @@ class BadgeService
   end
 
   def call
-    Badge.all.each  do |badge|
-      reward!(badge) if send("#{badge.title}", badge.rule)
+    Badge.all.select do |badge|
+      send("#{badge.title}", badge.rule)
     end
   end
 
-  def reward!(badge)
-    @user.badges.push(badge)
-    @given = true
-  end
 
   private
 
