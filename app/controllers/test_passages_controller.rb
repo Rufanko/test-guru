@@ -9,8 +9,8 @@ class TestPassagesController < ApplicationController
   def update
     @test_passage.accept!(params[:answer_ids])
     if @test_passage.completed?
-      badge = BadgeService.new(@test_passage)
-      badge.call
+      service = BadgeService.new(@test_passage)
+      service.call
       if badge.given
         flash[:notice] = "vi poluchili badge #{@test_passage.user.badges.last}"
       end
