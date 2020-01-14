@@ -4,7 +4,7 @@
 
   <p>
     <%= form.label :title %><br>
-    <%= form.text_field :title, id:  :badge_title %>
+    <%= form.select :title, Badge::BADGE_TITLES %>
   </p>
 
   <p>
