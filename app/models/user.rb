@@ -24,4 +24,5 @@ class User < ApplicationRecord
     is_a?(Admin)
   end
 
+
 end
