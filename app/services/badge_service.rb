@@ -26,7 +26,7 @@ class BadgeService
   end
 
   def all_in_category_badge(category)
-    @test_passage.success? && (Test.all_tests_by_category(category).count == @user.count_success_tests.uniq.count)
+    @test_passage.success? && (Test.all_tests_by_category(category).count == @user.count_success_tests(сategory).uniq.count)
   end
 
   def count_success_tests(category)
