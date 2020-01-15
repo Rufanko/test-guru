@@ -23,7 +23,15 @@ class User < ApplicationRecord
   def admin?
     is_a?(Admin)
   end
-
+	#def count_success_tests(level)
+	#	a ||= 0
+	#	self.test_passages.each do |x|
+	#		 if x.success? && x.test.level == level
+	#			 a += 1
+	#		 end
+	#	end
+	#	return a
+ #end
 
 
 end
