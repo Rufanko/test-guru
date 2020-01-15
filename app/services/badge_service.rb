@@ -29,13 +29,7 @@ class BadgeService
     @test_passage.success? && (Test.all_tests_by_category(category).count == @user.count_success_tests(сategory).uniq.count)
   end
 
-  def count_success_tests(category)
-    self.test_passages.each do |x|
-       if x.success?
-         x.where(category: category)
-       end
-    end
-  end
+
 
 
 
