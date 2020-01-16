@@ -1,7 +1,7 @@
 module BadgesHelper
   def rule_names
-    Badge::BADGE_TITLES.each do |title|
-      t(".title")
+    BadgeService::BADGE_TITLES.map do |title|
+      [t(".#{title}"), title]
     end
   end
 end
