@@ -1,5 +1,8 @@
 class BadgeService
 
+  BADGE_TITLES = %i[first_try_badge all_in_category_badge certain_level_badge].freeze
+
+
   def initialize(test_passage)
     @user = test_passage.user
     @test = test_passage.test
