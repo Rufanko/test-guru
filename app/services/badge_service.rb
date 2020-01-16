@@ -10,7 +10,7 @@ class BadgeService
   def call
     Badge.all.select do |badge|
       @badge = badge
-      send(badge.title.to_s, badge.rule)
+      send("#{badge.title}", badge.rule)
     end
   end
 
