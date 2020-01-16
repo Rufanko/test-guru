@@ -37,8 +37,8 @@ class TestPassagesController < ApplicationController
   end
 
   def reward_user!
-    badge = BadgeService.new(@test_passage).call
-    current_user.badges.push(badge)
+    badges = BadgeService.new(@test_passage).call
+    current_user.badges.push(badges)
   end
 
 end
