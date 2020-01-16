@@ -32,7 +32,7 @@ class BadgeService
 
   def all_in_category_badge(category)
     return false  if @user.rewarded?(@badge)
-    category_id_by_name = Category.find_by(name: 'Rails').id
+    category_id_by_name = Category.find_by(name: category).id
     @test_passage.success? && Test.all_tests_by_category(category).count == @user.test_passages.where(passed: true)
                                                                                                .joins(:test)
                                                                                                .where('tests.category_id=?', category_id_by_name)
