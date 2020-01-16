@@ -6,4 +6,6 @@ class Badge < ApplicationRecord
     validates :title, :image_url, :rule, presence: true
     validates :rule, uniqueness: {scope: :title, message: 'same badge already exists'}
 
+    
+
 end

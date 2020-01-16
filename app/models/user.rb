@@ -23,15 +23,21 @@ class User < ApplicationRecord
   def admin?
     is_a?(Admin)
   end
-	#def count_success_tests(level)
-	#	a ||= 0
-	#	self.test_passages.each do |x|
-	#		 if x.success? && x.test.level == level
-	#			 a += 1
-	#		 end
-	#	end
-	#	return a
- #end
+
+	def rewarded?(badge)
+		UserBadge.where(user: self, badge: badge).present?
+	end
+
+
+	def count_success_tests(category)
+    a ||= 0
+    self.test_passages.uniq.each do |x|
+       if x.success? && x.test.category == category
+         a += 1
+       end
+    end
+    return a
+  end
 
 
 end
