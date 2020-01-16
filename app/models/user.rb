@@ -29,15 +29,15 @@ class User < ApplicationRecord
 	end
 
 
-	def count_success_tests(category)
-    a ||= 0
-    self.test_passages.uniq.each do |x|
-       if x.success? && x.test.category == category
-         a += 1
-       end
-    end
-    return a
-  end
+	#def count_success_tests(category)
+  #  a ||= 0
+  #  self.test_passages.uniq.each do |x|
+  #     if x.success? && x.test.category == category
+  #       a += 1
+  #     end
+  #  end
+  #  return a
+  #end
 
 
 end
