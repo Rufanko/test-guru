@@ -1,5 +1,4 @@
 class BadgeService
-
   BADGE_TITLES = %i[first_try_badge all_in_category_badge certain_level_badge].freeze
 
   def initialize(test_passage)
@@ -11,32 +10,30 @@ class BadgeService
   def call
     Badge.all.select do |badge|
       @badge = badge
-      send("#{badge.title}", badge.rule)
+      send(badge.title.to_s, badge.rule)
     end
   end
 
-
-
   private
 
-  def first_try_badge(blank)
+  def first_try_badge(_blank)
     @user.tests.where(id: @test.id).count == 1 && @test_passage.success?
   end
 
   def certain_level_badge(level)
-   return false  if @user.rewarded?(@badge)
-   if @test_passage.success? && @test.level = level.to_i
-     Test.all.where(level: level).count == @user.tests.where(level: level).uniq.count
-   end
+    return false if @user.rewarded?(@badge)
+
+    if @test_passage.success? && @test.level = level.to_i
+      Test.all.where(level: level).count == @user.tests.where(level: level).uniq.count
+    end
   end
 
   def all_in_category_badge(category)
-    return false  if @user.rewarded?(@badge)
+    return false if @user.rewarded?(@badge)
+
     category_id_by_name = Category.find_by(name: category).id
     @test_passage.success? && Test.all_tests_by_category(category).count == @user.test_passages.where(passed: true)
-                                                                                               .joins(:test)
-                                                                                               .where('tests.category_id=?', category_id_by_name)
+                                                                                 .joins(:test)
+                                                                                 .where('tests.category_id=?', category_id_by_name).count
   end
-
-
 end
