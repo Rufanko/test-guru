@@ -5,7 +5,10 @@ class Badge < ApplicationRecord
 
     validates :title, :image_url, :rule, presence: true
     validates :rule, uniqueness: {scope: :title, message: 'same badge already exists'}
+    validates :title, inclusion: {in: BadgeService::BADGE_TITLES, message: 'wrong title' }
 
-    
+    #def validate_badge_title
+    #  error.add(:title) unless BadgeService::BADGE_TITLES.include?(:title)
+    #end
 
 end
