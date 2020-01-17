@@ -28,14 +28,14 @@ class BadgeService
 
       all_tests_by_lvl = Test.all.where(level: level).count
 
-      all_tests_by_lvl == @user.test_passages.joins(:test)
+      user_tests = @user.test_passages.joins(:test)
                                .where(passed: true)
-                               .where('created_at>?', last_badge_date)
-                               .where('tests.level=?', level).uniq.count
+                               .where(tests: {level: level})
+
+      all_tests_by_lvl == user_tests.where('test_passages.created_at>?', last_badge_date).uniq.count
+
     else
-      all_tests_by_lvl == @user.test_passages.joins(:test)
-                               .where(passed: true)
-                               .where('tests.level=?', level).uniq.count
+      all_tests_by_lvl == user_tests.uniq.count
     end
 
   end
