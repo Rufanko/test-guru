@@ -43,6 +43,7 @@ class BadgeService
   def all_in_category_badge(badge)
     category = badge.rule
     category_id = Category.find_by(name: category).id
+    return false unless @test.category = category
     return false if @user.rewarded?(badge)
     return false unless @test_passage.success?
     return false unless Test.all_tests_by_category(category).count == @user.test_passages.joins(:test)
