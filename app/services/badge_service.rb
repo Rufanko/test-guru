@@ -9,7 +9,6 @@ class BadgeService
 
   def call
     Badge.all.select do |badge|
-      @badge = badge
       send("#{badge.title}", badge.rule)
     end
   end
@@ -30,10 +29,10 @@ class BadgeService
 
   def all_in_category_badge(category)
     return false if @user.rewarded?(@badge)
-
-    category_id_by_name = Category.find_by(name: category).id
-    @test_passage.success? && Test.all_tests_by_category(category).count == @user.test_passages.where(passed: true)
-                                                                                 .joins(:test)
-                                                                                 .where('tests.category_id=?', category_id_by_name).count
+    return false unless @test_passage.success?
+    return false unless Test.all_tests_by_category(category).count == @user.test_passages.joins(:test)
+                                                                                .where(passed: true)
+                                                                                .where('tests.category_id=?', category_id_by_name).count
+    category_id = Category.find_by(name: category).id
   end
 end
