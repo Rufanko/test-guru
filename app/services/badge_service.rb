@@ -28,32 +28,42 @@ class BadgeService
 
       all_tests_by_lvl = Test.all.where(level: level).count
 
-      user_tests = @user.test_passages.joins(:test)
-                               .where(passed: true)
-                               .where(tests: {level: level})
-
-      all_tests_by_lvl == user_tests.where('test_passages.created_at>?', last_badge_date).uniq.count
+      all_tests_by_lvl == user_tests_by_level(level).where('test_passages.created_at>?', last_badge_date).uniq.count
 
     else
-      all_tests_by_lvl == user_tests.uniq.count
+      all_tests_by_lvl == user_tests_by_level(level).uniq.count
     end
 
   end
 
   def all_in_category_badge(badge)
     category = badge.rule
-    category_id = Category.find_by(name: category).id
     return false unless @test_passage.success?
     return false unless @test.category == category
     if @user.rewarded?(badge)
-      user_tests = @user.test_passages.joins(:test)
-                                      .where(passed: true)
-                                      .where(tests: {category_id: category_id})
-
       last_badge_date = UserBadge.all.where(user: @user, badge: badge).order("created_at").last.created_at
 
-      Test.all_tests_by_category(category).count == user_tests.where('test_passages.created_at>?', last_badge_date).uniq.count
+      Test.all_tests_by_category(category).count == user_tests_by_category(category_id).where('test_passages.created_at>?', last_badge_date).uniq.count
     else
-      Test.all_tests_by_category(category).count == user_tests.uniq.count
+      Test.all_tests_by_category(category).count == user_tests_by_category(category_id).uniq.count
     end
+  end
+
+  private
+
+  def user_tests_by_category(category)
+    category_id = Category.find_by(name: category).id
+    @user.test_passages.joins(:test)
+                       .where(passed: true)
+                       .where(tests: {category_id: category_id})
+  end
+
+  def user_tests_by_level(level)
+    @user.test_passages.joins(:test)
+                       .where(passed: true)
+                       .where(tests: {level: level})
+
+  end
+
+
 end
