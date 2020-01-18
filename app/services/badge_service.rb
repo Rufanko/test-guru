@@ -22,7 +22,7 @@ class BadgeService
   def certain_level_badge(badge)
     level = badge.rule
     return false unless @test_passage.success?
-    return false unless @test.level = level.to_i
+    return false unless @test.level == level.to_i
     if @user.rewarded?(badge)
       last_badge_date = UserBadge.all.where(user: @user, badge: badge).order("created_at").last.created_at
 
@@ -44,7 +44,7 @@ class BadgeService
     category = badge.rule
     category_id = Category.find_by(name: category).id
     return false unless @test_passage.success?
-    return false unless @test.category = category
+    return false unless @test.category == category
     if @user.rewarded?(badge)
       user_tests = @user.test_passages.joins(:test)
                                       .where(passed: true)
@@ -54,6 +54,6 @@ class BadgeService
 
       Test.all_tests_by_category(category).count == user_tests.where('test_passages.created_at>?', last_badge_date).uniq.count
     else
-      Test.all_tests_by_category(category).count == user_tests.uniq.count  
+      Test.all_tests_by_category(category).count == user_tests.uniq.count
     end
 end
