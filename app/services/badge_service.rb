@@ -53,16 +53,16 @@ class BadgeService
 
   def user_tests_by_category(category)
     category_id = Category.find_by(name: category).id
-    @user.test_passages.joins(:test)
-                       .where(passed: true)
-                       .where(tests: {category_id: category_id})
+    usertests.where(tests: {category_id: category_id})
   end
 
   def user_tests_by_level(level)
+    usertests.where(tests: {level: level})
+  end
+
+  def usertests
     @user.test_passages.joins(:test)
                        .where(passed: true)
-                       .where(tests: {level: level})
-
   end
 
 
