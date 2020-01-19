@@ -5,3 +5,7 @@ ru:
     gist:
       success: 'Gist был успешно создан %{url}'
       failure: 'Возникла ошибка...'
+    badge_service:
+      certain_level_badge: 'Все тесты одного уровня'
+      all_tests_by_category: 'Все тесты данной категории'
+      first_try_badge:  'С первой попытки'

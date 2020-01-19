@@ -22,7 +22,6 @@ class GistQuestionService
     }
   end
 
-
   def gist_content
     content  = [@question.content]
     content += @question.answers.pluck(:content)
@@ -34,5 +33,4 @@ class GistQuestionService
   def default_client
     Octokit::Client.new(access_token: Rails.application.credentials.gist_github_api_access_token!)
   end
-
 end

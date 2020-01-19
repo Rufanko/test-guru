@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root to: 'tests#index'
   devise_for :users, path: :gurus, path_names: { sign_in: :login, sign_out: :logout }
 
+  resources :badges, only: :index
+
   resources :tests, only: :index do
     post :start, on: :member
   end
@@ -15,6 +17,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    resources :badges, shallow: true
     resources :gists, only: %i[index]
     resources :tests do
       patch :update_inline, on: :member
