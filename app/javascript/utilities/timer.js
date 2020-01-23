@@ -12,7 +12,8 @@ function changeTimer(timer) {
         passedTime = timeNow - testCreated
 
     if (passedTime > timeTest) {
-        document.querySelector('passage-form').submit()
+        document.querySelector('.passage-form').submit()
+        return
     }
 
     timer.textContent = timeTest - passedTime
