@@ -27,6 +27,14 @@ class TestPassage < ApplicationRecord
   end
 
 
+  def spent_time
+    (Time.now - self.created_at).round 1
+  end
+
+  def time_is_up?
+    test.timer && (Time.now - created_at) > test.timer
+  end
+
   private
 
 

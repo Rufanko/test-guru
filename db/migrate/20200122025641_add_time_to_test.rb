@@ -1,5 +1,5 @@
 class AddTimeToTest < ActiveRecord::Migration[6.0]
   def change
-    add column :tests, :timer, :integer, defailt: 0
+    add_column :tests, :timer, :integer, default: 0
   end
 end
