@@ -14,7 +14,7 @@ class TestsController < ApplicationController
   private
 
   def test_params
-    params.require(:test).permit(:title, :level, :category_id, :timer)
+    params.require(:test).permit(:title, :level, :category_id)
   end
 
   def find_test
